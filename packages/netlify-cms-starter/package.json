@@ -1,0 +1,33 @@
+{
+  "name": "netlify-cms-components",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "netlify-cms": "^2.3.1",
+    "netlify-cms-backend-fs": "^0.2.0",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "lodash.flow": "^3.5.0",
+    "multer": "^1.4.1",
+    "react-scripts": "^2.1.2"
+  },
+  "peerDependencies": {},
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Opera versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions"
+  ],
+  "fileSystemPath": ""
+}

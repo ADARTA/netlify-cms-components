@@ -1,0 +1,58 @@
+{
+  "name": "netlify-cms-backend-fs",
+  "version": "0.2.0",
+  "description": "Backend for Netlify CMS to test with local file system",
+  "repository": "adarta/netlify-cms-components",
+  "main": "dist/fs-backend.js",
+  "files": [
+    "dist/",
+    "src/",
+    "README.md"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build:copy": "cp-cli scripts/fs/ dist/fs/",
+    "build:lib": "webpack --mode=production",
+    "build": "npm run build:copy && npm run build:lib"
+  },
+  "dependencies": {
+    "js-base64": "^2.5.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "cp-cli": "^1.1.2",
+    "css-loader": "^2.0.2",
+    "style-loader": "^0.23.1",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "peerDependencies": {
+    "emotion": "^9.2.6",
+    "lodash": "^4.17.10",
+    "netlify-cms-ui-default": "^2.0.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-emotion": "^9.2.6",
+    "react-immutable-proptypes": "^2.1.0"
+  },
+  "keywords": [
+    "netlify",
+    "netlify-cms",
+    "backend",
+    "package",
+    "adarta"
+  ],
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Opera versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions"
+  ]
+}

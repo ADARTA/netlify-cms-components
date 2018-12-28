@@ -1,0 +1,54 @@
+{
+  "backend": {
+    "name": "test-repo"
+  },
+  "display_url": "https://netlify-cms-components.netlify.com",
+  "media_folder": "public/assets/uploads",
+  "public_folder": "/assets/uploads",
+  "collections": [{
+    "name": "test",
+    "label": "Test",
+    "files": [{
+      "label": "Test",
+      "name": "test",
+      "file": "example/test.yml",
+      "fields": [{
+          "name": "test_widget",
+          "label": "Test Number",
+          "widget": "number"
+        },
+        {
+          "name": "test_widget_number",
+          "label": "Test String",
+          "widget": "string",
+          "required": false
+        }
+      ]
+    }, {
+      "label": "Recipes",
+      "name": "recipes",
+      "file": "example/recipes.json",
+      "fields": [{
+        "name": "items",
+        "label": "Recipe",
+        "widget": "list",
+        "fields": [{
+            "name": "title",
+            "label": "Recipe Title",
+            "widget": "string"
+          },
+          {
+            "name": "id",
+            "label": "Recipe Id",
+            "widget": "string"
+          },
+          {
+            "name": "directions",
+            "label": "Recipe Directions",
+            "widget": "markdown"
+          }
+        ]
+      }]
+    }]
+  }]
+}
