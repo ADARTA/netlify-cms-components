@@ -1,5 +1,7 @@
 ## Custom Backend for NetlifyCMS
 
+[![](https://img.shields.io/npm/v/netlify-cms-backend-fs.svg?style=plastic)](https://www.npmjs.com/package/netlify-cms-backend-fs)
+
 ***Note:*** This is a backend library for NetlifyCMS proposed for file system testing locally during development. Handy for testing your config files.
 
 To use:
