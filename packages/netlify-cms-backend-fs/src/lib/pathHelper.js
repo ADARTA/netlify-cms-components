@@ -2,7 +2,8 @@ const absolutePath = new RegExp('^(?:[a-z]+:)?//', 'i');
 // eslint-disable-next-line
 const normalizePath = path => path.replace(/[\\\/]+/g, '/');
 
-export function resolvePath(path, basePath) { // eslint-disable-line
+export function resolvePath(path, basePath) {
+  // eslint-disable-line
   // No path provided, skip
   if (!path) return null;
 
@@ -11,11 +12,11 @@ export function resolvePath(path, basePath) { // eslint-disable-line
 
   if (path.indexOf('/') === -1) {
     // It's a single file name, no directories. Prepend public folder
-    return normalizePath(`/${ basePath }/${ path }`);
+    return normalizePath(`/${basePath}/${path}`);
   }
 
   // It's a relative path. Prepend a forward slash.
-  return normalizePath(`/${ path }`);
+  return normalizePath(`/${path}`);
 }
 
 /**
@@ -29,7 +30,7 @@ export function resolvePath(path, basePath) { // eslint-disable-line
  *   // returns
  *   'quux'
  */
-export function basename(p, ext = "") {
+export function basename(p, ext = '') {
   // Special case: Normalize will modify this to '.'
   if (p === '') {
     return p;

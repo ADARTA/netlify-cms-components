@@ -29,7 +29,7 @@ export default class FileSystemAuthenticationPage extends React.Component {
   handleLogin(e) {
     e.preventDefault();
     this.props.onLogin(this.state);
-  };
+  }
 
   render() {
     const { inProgress, config } = this.props;
@@ -55,4 +55,4 @@ AuthenticationPage.propTypes = {
   onLogin: PropTypes.func.isRequired,
   inProgress: PropTypes.bool,
   config: ImmutablePropTypes.map,
-}
+};

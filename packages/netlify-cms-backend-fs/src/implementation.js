@@ -1,22 +1,24 @@
 import trimStart from 'lodash/trimStart';
 import AuthenticationPage from './AuthenticationPage';
-import API from "./API";
+import API from './API';
 import { fileExtension } from './lib/pathHelper';
 
 const nameFromEmail = email => {
   return email
-    .split('@').shift().replace(/[.-_]/g, ' ')
+    .split('@')
+    .shift()
+    .replace(/[.-_]/g, ' ')
     .split(' ')
     .filter(f => f)
     .map(s => s.substr(0, 1).toUpperCase() + (s.substr(1) || ''))
     .join(' ');
-}
+};
 
 export class FileSystemBackend {
   constructor(config) {
     this.config = config;
 
-    this.api_root = config.getIn(["backend", "api_root"], "http://localhost:8080/api");
+    this.api_root = config.getIn(['backend', 'api_root'], 'http://localhost:8080/api');
     console.log(`Setting up file-system backend: ${this.api_root}`);
   }
 
@@ -42,30 +44,38 @@ export class FileSystemBackend {
   }
 
   entriesByFolder(collection, extension) {
-    return this.api.listFiles(collection.get("folder"))
-    .then(files => files.filter(file => fileExtension(file.name) === extension))
-    .then(this.fetchFiles);
+    return this.api
+      .listFiles(collection.get('folder'))
+      .then(files => files.filter(file => fileExtension(file.name) === extension))
+      .then(this.fetchFiles);
   }
 
   entriesByFiles(collection) {
-    const files = collection.get("files").map(collectionFile => ({
-      path: collectionFile.get("file"),
-      label: collectionFile.get("label"),
+    const files = collection.get('files').map(collectionFile => ({
+      path: collectionFile.get('file'),
+      label: collectionFile.get('label'),
     }));
     return this.fetchFiles(files);
   }
 
   fetchFiles(files) {
     const promises = [];
-    files.forEach((file) => {
-      promises.push(new Promise((resolve, reject) => this.api.readFile(file.path).then((data) => {
-        resolve({ file, data });
-      }).catch((err) => {
-        reject(err);
-      })));
+    files.forEach(file => {
+      promises.push(
+        new Promise((resolve, reject) =>
+          this.api
+            .readFile(file.path)
+            .then(data => {
+              resolve({ file, data });
+            })
+            .catch(err => {
+              reject(err);
+            }),
+        ),
+      );
     });
     return Promise.all(promises);
-  };
+  }
 
   getEntry(collection, slug, path) {
     return this.api.readFile(path).then(data => ({
@@ -75,11 +85,14 @@ export class FileSystemBackend {
   }
 
   getMedia() {
-    return this.api.listFiles(this.config.get('media_folder'))
+    return this.api
+      .listFiles(this.config.get('media_folder'))
       .then(files => files.filter(file => file.type === 'file'))
-      .then(files => files.map(({ sha, name, size, stats, path }) => {
-        return { id: sha, name, size: stats.size, url: `${ this.config.get('public_folder') }/${ name }`, path };
-      }));
+      .then(files =>
+        files.map(({ sha, name, size, stats, path }) => {
+          return { id: sha, name, size: stats.size, url: `${this.config.get('public_folder')}/${name}`, path };
+        }),
+      );
   }
 
   persistEntry(entry, mediaFiles = [], options = {}) {
@@ -92,8 +105,7 @@ export class FileSystemBackend {
       const { value, path, public_path, fileObj } = mediaFile;
       const url = public_path;
       return { id: response.sha, name: value, size: fileObj.size, url, path: trimStart(path, '/') };
-    }
-    catch(error) {
+    } catch (error) {
       console.error(error);
       throw error;
     }
