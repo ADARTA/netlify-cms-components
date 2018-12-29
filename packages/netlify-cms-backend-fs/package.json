@@ -2,7 +2,10 @@
   "name": "netlify-cms-backend-fs",
   "version": "0.2.0",
   "description": "Backend for Netlify CMS to test with local file system",
-  "repository": "adarta/netlify-cms-components",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adarta/netlify-cms-components.git"
+  },
   "main": "dist/fs-backend.js",
   "files": [
     "dist/",
@@ -11,6 +14,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "format": "prettier --write \"src/**/*.js\"",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
     "build:lib": "webpack --mode=production",
     "build": "npm run build:copy && npm run build:lib"
@@ -25,6 +29,7 @@
     "babel-loader": "^8.0.4",
     "cp-cli": "^1.1.2",
     "css-loader": "^2.0.2",
+    "prettier": "^1.15.3",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.28.2",
