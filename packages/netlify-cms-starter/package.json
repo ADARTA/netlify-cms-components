@@ -16,7 +16,6 @@
   },
   "devDependencies": {
     "lodash.flow": "^3.5.0",
-    "multer": "^1.4.1",
     "react-scripts": "^2.1.2"
   },
   "peerDependencies": {},
