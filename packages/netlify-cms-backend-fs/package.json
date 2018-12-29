@@ -1,6 +1,6 @@
 {
   "name": "netlify-cms-backend-fs",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Backend for Netlify CMS to test with local file system",
   "repository": {
     "type": "git",
