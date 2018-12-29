@@ -14,10 +14,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write \"src/**/*.js\"",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
     "build:lib": "webpack --mode=production",
-    "build": "npm run build:copy && npm run build:lib"
+    "build": "npm run build:copy && npm run build:lib",
+    "format": "prettier --write \"src/**/*.js\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "echo \"Create test and lint - (npm run test && npm run lint)\"",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "dependencies": {
     "js-base64": "^2.5.0"
@@ -45,12 +49,12 @@
     "react-immutable-proptypes": "^2.1.0"
   },
   "keywords": [
-    "netlify",
+    "adarta",
     "netlify-cms",
     "backend",
-    "package",
-    "adarta"
+    "fs"
   ],
+  "author": "talves",
   "browserslist": [
     "last 2 Chrome versions",
     "last 2 Opera versions",

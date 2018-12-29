@@ -68,7 +68,7 @@ Don't forget: code like you are on 🔥
 
 The Netlify Logo is Copyright of [Netlify][2] and should not be used without their consent.
 
-[1]: https://github.com/adarta/netlify-cms-components/packages/netlify-cms-starter
+[1]: https://github.com/ADARTA/netlify-cms-components/tree/master/packages/netlify-cms-starter
 [2]: https://www.netlify.com/
 [3]: https://www.netlifycms.org/
 [4]: https://github.com/adarta/netlify-cms-react-example
