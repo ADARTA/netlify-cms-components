@@ -19,9 +19,9 @@ npm install netlify-cms-backend-fs --save-dev
 ```
 ## Parts of this package
 
-Backend library exists in `dist` directory.
+Backend library bundles exist in `dist` directory.
 
-- `dist/index.js` can be used for global access to `window.FileSystemBackend`
+- `dist/index.js` can be used for global access to `FileSystemBackendClass`
 - `dist/fs-backend.js` is a `umd` build to use directly as a component see example in `netlify-cms-starter`
 
 Express server middleware is in the `dist/fs` directory.
@@ -30,12 +30,12 @@ Express server middleware is in the `dist/fs` directory.
 
 ## How to register with CMS on a static page locally
 
-  - Copy the package `dist/index.js` script bundle file into your cms location (maybe `fs.js`).
+  - Copy the package `dist/index.js` script bundle file into your cms location (maybe `backend-fs.js`).
   - Change the `index.html` page to use the backend as in the example below
   - Register the backend Class to the CMS as shown below
   - Change the `config.yml` backend to `backend: file-system` or the name you registered
   - [Webpack] Add devServer middleware to expose the `/api` path for the file-system API
-  - [Stand Alone Server] Create an express server (coming soon) to host the `/api` endpoint
+  - [Stand Alone Server] Create an express server (example coming soon) to host the `/api` endpoint
 
 ### Add script and register in your CMS page
 
@@ -44,12 +44,33 @@ Express server middleware is in the `dist/fs` directory.
   ...
 </head>
 <body>
-  <script type="text/javascript" src='cms.js'/>
-  <script type="text/javascript" src="fs.js"/>
+  <script type="text/javascript" src='netlify-cms.js'/>
+  <script type="text/javascript" src="backend-fs.js"/>
   <script>
-    CMS.registerBackend("file-system", FileSystemBackend)
+    CMS.registerBackend("file-system", FileSystemBackendClass)
   </script>
 </body>
+```
+
+OR
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager</title>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Netlify CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.3.0/dist/index.js"/>
+    <script>
+      CMS.registerBackend("file-system", FileSystemBackendClass)
+    </script>
+  </body>
+</html>
 ```
 
 ### Start your devServer using the middleware scripts

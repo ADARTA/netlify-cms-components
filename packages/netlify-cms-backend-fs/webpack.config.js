@@ -3,19 +3,14 @@
  */
 const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
+const peers = Object.keys(pkg.peerDependencies || {});
 
-module.exports = {
-  entry: {
-    'fs-backend': './src/implementation.js',
-    'index': './src/index.js'
-  },
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js',
-    library: pkg.name,
-    libraryTarget: 'umd',
-    umdNamedDefine: true,
-  },
+const externals = (context, request, cb) => {
+  const isPeerDep = dep => new RegExp(`^${dep}($|/)`).test(request);
+  return peers.some(isPeerDep) ? cb(null, request) : cb();
+};
+
+const baseConfig = {
   module: {
     rules: [
       {
@@ -47,13 +42,49 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       }
     ]
-  },
-  /**
-   * Exclude peer dependencies from package bundles.
-   */
-  externals: (context, request, cb) => {
-    const externals = Object.keys(pkg.peerDependencies || {});
-    const isPeerDep = dep => new RegExp(`^${dep}($|/)`).test(request);
-    return externals.some(isPeerDep) ? cb(null, request) : cb();
-  },
+  }
 }
+
+// umdConfig
+const umdConfig = Object.assign(
+  {},
+  baseConfig,
+  {
+    entry: {
+      'fs-backend': './src/implementation.js'
+    },
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: '[name].js',
+      library: pkg.name,
+      libraryTarget: 'umd',
+      umdNamedDefine: true,
+    },
+    /**
+     * Exclude peer dependencies from package bundles.
+     */
+    externals,
+  }
+)
+
+// packageConfig
+const packageConfig = Object.assign(
+  {},
+  baseConfig,
+  {
+    entry: {
+      'index': './src/index.js'
+    },
+    output: {
+      path: path.join(__dirname, 'dist'),
+      filename: '[name].js',
+      library: 'FileSystemBackend',
+      libraryTarget: 'assign',
+    },
+    optimization: {
+      minimize: true // default true
+    }
+  }
+)
+
+module.exports = [packageConfig, umdConfig]
