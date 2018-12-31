@@ -47,7 +47,7 @@ export class FileSystemBackend {
     return this.api
       .listFiles(collection.get('folder'))
       .then(files => files.filter(file => fileExtension(file.name) === extension))
-      .then(this.fetchFiles);
+      .then(files => this.fetchFiles(files));
   }
 
   entriesByFiles(collection) {
@@ -59,19 +59,19 @@ export class FileSystemBackend {
   }
 
   fetchFiles(files) {
+    const api = this.api;
     const promises = [];
     files.forEach(file => {
       promises.push(
         new Promise((resolve, reject) =>
-          this.api
-            .readFile(file.path)
+          api.readFile(file.path)
             .then(data => {
               resolve({ file, data });
             })
             .catch(err => {
               reject(err);
-            }),
-        ),
+            })
+        )
       );
     });
     return Promise.all(promises);
