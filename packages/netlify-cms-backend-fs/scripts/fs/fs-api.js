@@ -17,7 +17,7 @@ module.exports = {
   files: (dirname) => {
     const name = "Files";
     const read = (cb) => {
-      if (!cb) throw new Error(`Invalid call to ${name} - requires a callback function(content)`);
+      if (!cb) throw new Error(`Invalid call to ${name}.read - requires a callback function(content)`);
       const thispath = path.join(siteRoot.dir, dirname);
       const files = fs.existsSync(thispath) ? fs.readdirSync(thispath) : [];
       const filelist = [];
@@ -36,7 +36,6 @@ module.exports = {
     const name = "File";
     const thisfile = path.join(siteRoot.dir, id);
     let stats;
-    if (!fs.existsSync(thisfile)) throw new Error(`Invalid call to ${name} - File does not exist(${thisfile})`);
     try {
       stats = fs.statSync(thisfile);
     } catch (err) {
@@ -45,7 +44,7 @@ module.exports = {
 
     /* GET-Read an existing file */
     const read = (cb) => {
-      if (!cb) throw new Error(`Invalid call to ${name} - requires a callback function(content)`);
+      if (!cb) throw new Error(`Invalid call to ${name}.read - requires a callback function(content)`);
       if (typeof stats.isFile === "function" && stats.isFile()) {
         fs.readFile(thisfile, 'utf8', (err, data) => {
           if (err) {
@@ -55,11 +54,12 @@ module.exports = {
           }
         });
       } else {
-        throw new Error(`Invalid call to ${name} - object path is not a file(${thisfile})`);
+        throw new Error(`Invalid call to ${name}.read - object path is not a file(${thisfile})`);
       }
     };
     /* POST-Create a NEW file, ERROR if exists */
     const create = (body, cb) => {
+      if (fs.existsSync(thisfile)) throw new Error(`Invalid call to ${name}.create - File does exists(${thisfile})`);
       fs.writeFile(thisfile, body.content, { encoding: body.encoding, flag: 'wx' }, (err) => {
         if (err) {
           cb({ error: err });
@@ -70,6 +70,7 @@ module.exports = {
     };
     /* PUT-Update an existing file */
     const update = (body, cb) => {
+      if (!fs.existsSync(thisfile)) throw new Error(`Invalid call to ${name}.update - File does not exist(${thisfile})`);
       fs.writeFile(thisfile, body.content, { encoding: body.encoding, flag: 'w' }, (err) => {
         if (err) {
           cb({ error: err });
