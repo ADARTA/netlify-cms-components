@@ -3,6 +3,9 @@ const path = require('path');
 const chalk = require('chalk');
 const log = console.log;
 
+const { version, name } = require('../../package.json');
+log(chalk.green(`${name} (version: ${version})`));
+
 const projectRoot = path.join(process.cwd());
 log(chalk.green(`Root path is ${ projectRoot }`));
 
