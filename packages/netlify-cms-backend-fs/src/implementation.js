@@ -20,6 +20,9 @@ export class FileSystemBackend {
 
     this.api_root = config.getIn(['backend', 'api_root'], 'http://localhost:8080/api');
     console.log(`Setting up file-system backend: ${this.api_root}`);
+    if (FILESYSTEMBACKEND_VERSION) {
+      console.log(FILESYSTEMBACKEND_VERSION);
+    }
   }
 
   authComponent() {

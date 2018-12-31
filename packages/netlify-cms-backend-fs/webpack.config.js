@@ -2,6 +2,7 @@
  * webpack.config.js
  */
 const path = require('path');
+const webpack = require('webpack');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const peers = Object.keys(pkg.peerDependencies || {});
 
@@ -42,7 +43,8 @@ const baseConfig = {
         use: ['style-loader', 'css-loader'],
       }
     ]
-  }
+  },
+  plugins: [],
 }
 
 // umdConfig
@@ -87,4 +89,18 @@ const packageConfig = Object.assign(
   }
 )
 
-module.exports = [packageConfig, umdConfig]
+module.exports = (env, argv) => {
+  const isProduction = (argv.mode === 'production');
+  if (argv.mode === 'development') {
+    packageConfig.devtool = 'source-map';
+    umdConfig.devtool = 'source-map';
+  }
+
+  const versionPlugin = new webpack.DefinePlugin({
+    FILESYSTEMBACKEND_VERSION: JSON.stringify(`${pkg.name} ${pkg.version}${isProduction ? '' : '-dev'}`),
+  });
+  packageConfig.plugins.push(versionPlugin);
+  umdConfig.plugins.push(versionPlugin);
+
+  return [packageConfig, umdConfig];
+}
