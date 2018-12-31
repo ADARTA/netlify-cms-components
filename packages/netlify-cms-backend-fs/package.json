@@ -14,6 +14,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "test:simple": "node ./scripts/_tests_/simple.js",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
     "build:lib": "webpack --mode=production",
     "build": "npm run build:copy && npm run build:lib",
