@@ -3,7 +3,7 @@ import './setup'
 // import CMS, { init } from 'netlify-cms/dist/netlify-cms.es5';
 import CMS, { init } from 'netlify-cms';
 // import * as StarterWidget from 'netlify-cms-widget-starter';
-// import FileSystemBackend from 'netlify-cms-backend-fs/dist';
+// import { FileSystemBackend } from 'netlify-cms-backend-fs';
 
 import config from './data/config.json';
 import AuthorsPreview from './components/AuthorsPreview';
