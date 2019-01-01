@@ -149,7 +149,7 @@ export default class API {
       if (file.uploaded) {
         return;
       }
-      uploadPromises.push(this.uploadBlob(file, options.newEntry && !file.toBase64));
+      uploadPromises.push(this.uploadBlob(file, options.newEntry || (file.toBase64 && !file.raw)));
     });
 
     const fileTree = this.composeFileTree(files);
