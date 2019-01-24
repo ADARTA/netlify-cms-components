@@ -4,17 +4,19 @@ const chalk = require('chalk');
 const log = console.log;
 
 const { version, name } = require('../../package.json');
-log(chalk.green(`${name} (version: ${version})`));
+const packageLabel = `[${name}]`
+
+log(chalk.green(`${packageLabel} (version: ${version})`));
 
 const projectRoot = path.join(process.cwd());
-log(chalk.green(`Root path is ${ projectRoot }`));
+log(chalk.green(`\n${packageLabel} root path is ${projectRoot} \n`));
 
 const siteRoot = {
   dir: path.join(projectRoot, "example")
 };
 const setPath = (relPath) => {
   siteRoot.dir = path.join(projectRoot, relPath);
-  log(chalk.green(`Site path is ${ siteRoot.dir }`));
+  log(chalk.green(`\n${packageLabel} site path is ${ siteRoot.dir } \n`));
 };
 
 const logError = (message) => {
@@ -31,10 +33,10 @@ module.exports = {
   files: (dirname) => {
     const name = "Files";
     const read = (cb) => {
-      if (notCallback(cb)) throw logError(`${name}.read: missing callback(content)`);
+      if (notCallback(cb)) throw logError(`${packageLabel} [read] Error: missing callback`);
       const thispath = path.join(siteRoot.dir, dirname);
       const dirExists = fs.existsSync(thispath);
-      if (!dirExists) log(chalk.yellow(`Warning: Directory missing ${thispath}`));
+      if (!dirExists) log(chalk.yellow(`${packageLabel} [read] Warning: directory missing ${thispath}`));
       const files =  dirExists ? fs.readdirSync(thispath) : [];
       const filelist = [];
       files.forEach(function(element) {
@@ -64,7 +66,7 @@ module.exports = {
 
     /* GET-Read an existing file */
     const read = (cb) => {
-      if (notCallback(cb)) throw logError(`${name}.read: missing callback(content)`);
+      if (notCallback(cb)) throw logError(`${packageLabel} [read] Error: missing callback`);
       const stats = readStats(thisfile);
       if (typeof stats.isFile === "function" && stats.isFile()) {
         fs.readFile(thisfile, 'utf8', (err, data) => {
@@ -75,13 +77,13 @@ module.exports = {
           }
         });
       } else {
-        cb({ error: logError(`${name}.read: - not a file(${thisfile})`) });
+        cb({ error: logError(`${packageLabel} [read] Error: not a file(${thisfile})`) });
       }
     };
     /* POST-Create a NEW file, ERROR if exists */
     const create = (body, cb) => {
-      if (notCallback(cb)) throw logError(`${name}.create: missing callback(content)`);
-      if (fs.existsSync(thisfile)) throw new Error(`Invalid call to ${name}.create - File does exists(${thisfile})`);
+      if (notCallback(cb)) throw logError(`${packageLabel} [create] Error: missing callback`);
+      if (fs.existsSync(thisfile)) throw new Error(`${packageLabel} [create] Error: file exists (${thisfile})`);
       fs.writeFile(thisfile, body.content, { encoding: body.encoding, flag: 'wx' }, (err) => {
         if (err) {
           cb({ error: err });
@@ -92,8 +94,8 @@ module.exports = {
     };
     /* PUT-Update an existing file */
     const update = (body, cb) => {
-      if (notCallback(cb)) throw logError(`${name}.update: missing callback(content)`);
-      if (!fs.existsSync(thisfile)) throw new Error(`Invalid call to ${name}.update - File does not exist(${thisfile})`);
+      if (notCallback(cb)) throw logError(`${packageLabel} [update] Error: missing callback`);
+      if (!fs.existsSync(thisfile)) throw new Error(`${packageLabel} [update] Error: file does not exist (${thisfile})`);
       fs.writeFile(thisfile, body.content, { encoding: body.encoding, flag: 'w' }, (err) => {
         if (err) {
           cb({ error: err });
@@ -104,12 +106,12 @@ module.exports = {
     };
     /* DELETE an existing file */
     const del = (cb) => {
-      if (notCallback(cb)) throw logError(`${name}.del: missing callback(content)`);
+      if (notCallback(cb)) throw logError(`${packageLabel} [del] Error: missing callback`);
       fs.unlink(thisfile, (err) => {
         if (err) {
           cb({ error: err });
         } else {
-          cb(`Deleted File ${ thisfile }`);
+          cb(`${packageLabel} deleted file (${ thisfile })`);
         }
       });
     };
