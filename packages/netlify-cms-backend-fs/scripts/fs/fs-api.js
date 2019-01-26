@@ -6,17 +6,17 @@ const log = console.log;
 const { version, name } = require('../../package.json');
 const packageLabel = `[${name}]`
 
-log(chalk.green(`${packageLabel} (version: ${version})`));
+log(chalk.green(`${packageLabel} (version: ${version}) \n`));
 
 const projectRoot = path.join(process.cwd());
-log(chalk.green(`\n${packageLabel} root path is ${projectRoot} \n`));
+log(chalk.green(`${packageLabel} root path is ${projectRoot} \n`));
 
 const siteRoot = {
   dir: path.join(projectRoot, "example")
 };
 const setPath = (relPath) => {
   siteRoot.dir = path.join(projectRoot, relPath);
-  log(chalk.green(`\n${packageLabel} site path is ${ siteRoot.dir } \n`));
+  log(chalk.green(`${packageLabel} site path is ${ siteRoot.dir } \n`));
 };
 
 const logError = (message) => {
