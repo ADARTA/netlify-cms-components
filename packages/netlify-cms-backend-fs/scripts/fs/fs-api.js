@@ -6,10 +6,10 @@ const log = console.log;
 const { version, name } = require('../../package.json');
 const packageLabel = `[${name}]`
 
-log(chalk.green(`${packageLabel} (version: ${version}) \n`));
+log(chalk.green(`${packageLabel} (version: ${version})`));
 
 const projectRoot = path.join(process.cwd());
-log(chalk.green(`${packageLabel} root path is ${projectRoot} \n`));
+log(chalk.green(`${packageLabel} root path is ${projectRoot}`));
 
 const siteRoot = {
   dir: path.join(projectRoot, "example")
