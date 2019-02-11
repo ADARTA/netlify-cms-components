@@ -44,10 +44,19 @@ Express server middleware is in the `dist/fs` directory.
   ...
 </head>
 <body>
+  <script>
+    /**
+     * Global flag to initialize the CMS manually after registering backend and widgets.
+     * In most cases, the CMS will render prior to the backend script load which could cause errors.
+     * This will make sure the backend is registered prior to the loading of the CMS.
+     */
+    CMS_MANUAL_INIT = true; 
+  </script>
   <script type="text/javascript" src='netlify-cms.js'/>
   <script type="text/javascript" src="backend-fs.js"/>
   <script>
-    CMS.registerBackend("file-system", FileSystemBackendClass)
+    CMS.registerBackend("file-system", FileSystemBackendClass);
+    initCMS(); // Manually starts the CMS on the page after the registration of the backend
   </script>
 </body>
 ```
@@ -64,10 +73,14 @@ OR
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script>
+    CMS_MANUAL_INIT = true; 
+  </script>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
     <script src="https://unpkg.com/netlify-cms-backend-fs@^0.3.0/dist/index.js"/>
     <script>
       CMS.registerBackend("file-system", FileSystemBackendClass)
+      initCMS(); // Manually starts the CMS on the page after the registration of the backend
     </script>
   </body>
 </html>
