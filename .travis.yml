@@ -6,6 +6,7 @@ cache: yarn
 
 install:
   - yarn global add webpack-cli
+  - yarn
 #   - yarn global add lerna
 #   - lerna bootstrap
 
