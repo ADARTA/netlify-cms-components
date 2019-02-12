@@ -4,7 +4,8 @@ node_js:
 
 cache: yarn
 
-# install:
+install:
+  - yarn global add webpack-cli
 #   - yarn global add lerna
 #   - lerna bootstrap
 
