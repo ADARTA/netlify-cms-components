@@ -1,10 +1,10 @@
 {
   "name": "netlify-cms-backend-fs",
-  "version": "0.3.5",
+  "version": "0.0.0-development",
   "description": "Backend for Netlify CMS to test with local file system",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adarta/netlify-cms-components.git"
+    "url": "https://github.com/ADARTA/netlify-cms-components.git"
   },
   "main": "dist/fs-backend.js",
   "files": [
@@ -23,7 +23,9 @@
     "format": "prettier --write \"src/**/*.js\"",
     "prepare": "npm run build",
     "prepublishOnly": "echo \"Create test and lint - (npm run test && npm run lint)\"",
-    "version": "npm run format"
+    "version": "npm run format",
+    "semantic-release:local": "semantic-release pre --debug=false && npm publish && semantic-release post --debug=false",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -42,7 +44,8 @@
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "semantic-release": "^15.13.3"
   },
   "peerDependencies": {
     "emotion": "^9.2.6",
