@@ -14,7 +14,7 @@ install:
 script:
   - cd packages/netlify-cms-backend-fs
   - yarn build:copy
-  - yarn build:lib
+  - yarn run webpack --mode=production
 
 after_success:
   - yarn semantic-release
