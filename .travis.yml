@@ -8,6 +8,10 @@ cache:
     - $HOME/.yarn-cache
     - node_modules
 
+branches:
+  only:
+    - master
+
 install:
   - yarn
   - yarn global add lerna
