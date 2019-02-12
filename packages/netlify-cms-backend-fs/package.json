@@ -18,8 +18,8 @@
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
     "build:lib": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "build": "npm run build:copy && npm run build:lib",
-    "dev": "npm run build:copy && npm run build:dev",
+    "build": "yarn build:copy && yarn build:lib",
+    "dev": "yarn build:copy && yarn build:dev",
     "format": "prettier --write \"src/**/*.js\"",
     "prepare": "npm run build",
     "prepublishOnly": "echo \"Create test and lint - (npm run test && npm run lint)\"",
@@ -41,11 +41,12 @@
     "cp-cli": "^1.1.2",
     "css-loader": "^2.0.2",
     "prettier": "^1.15.3",
+    "semantic-release": "^15.13.3",
+    "semantic-release-cli": "4.1.0",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2",
-    "semantic-release": "^15.13.3"
+    "webpack-cli": "^3.1.2"
   },
   "peerDependencies": {
     "emotion": "^9.2.6",
