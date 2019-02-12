@@ -16,8 +16,8 @@
   "scripts": {
     "test:simple": "node ./scripts/_tests_/simple.js",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
-    "build:lib": "webpack --mode=production",
-    "build:dev": "webpack --mode=development",
+    "build:lib": "webpack-cli --mode=production",
+    "build:dev": "webpack-cli --mode=development",
     "build": "run-s build:copy build:lib",
     "dev": "run-s build:copy build:dev",
     "format": "prettier --write \"src/**/*.js\"",
