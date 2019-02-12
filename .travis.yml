@@ -1,20 +1,23 @@
 language: node_js
 node_js:
-  - "8"
-
-cache: yarn
+  - '8'
+  - '10'
+cache:
+  yarn: true
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
 
 install:
-  - yarn global add webpack
-  - yarn global add webpack-cli
   - yarn
-#   - yarn global add lerna
-#   - lerna bootstrap
+  - yarn global add lerna
+  - lerna bootstrap
 
 script:
   - cd packages/netlify-cms-backend-fs
   - yarn build:copy
-  - yarn run webpack --mode=production
+  - yarn build:lib
 
 after_success:
   - yarn semantic-release
