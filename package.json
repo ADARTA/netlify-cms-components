@@ -4,12 +4,20 @@
     "packages/*"
   ],
   "scripts": {
+    "commit": "git-cz",
     "start": "cd packages/netlify-cms-starter && npm run start",
     "serve:build": "serve -s packages/netlify-cms-starter/build",
     "build": "lerna run build",
     "build:starter": "cd packages/netlify-cms-starter && npm run build"
   },
   "devDependencies": {
+    "commitizen": "3.0.5",
+    "cz-conventional-changelog": "2.1.0",
     "lerna": "^3.8.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }

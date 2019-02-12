@@ -1,8 +1,7 @@
-[![Build Status](https://travis-ci.org/ADARTA/netlify-cms-components.svg?branch=master)](https://travis-ci.org/ADARTA/netlify-cms-components)
-
 ## Custom Backend for NetlifyCMS
 
-[![](https://img.shields.io/npm/v/netlify-cms-backend-fs.svg?style=plastic)](https://www.npmjs.com/package/netlify-cms-backend-fs)
+[![Build Status](https://img.shields.io/travis/ADARTA/netlify-cms-components/master.svg?style=flat-square)](https://travis-ci.org/ADARTA/netlify-cms-components)
+[![](https://img.shields.io/npm/v/netlify-cms-backend-fs.svg?style=flat-square)](https://www.npmjs.com/package/netlify-cms-backend-fs)
 
 ***Note:*** This is a backend library for NetlifyCMS proposed for file system testing locally during development. Handy for testing your config files.
 
