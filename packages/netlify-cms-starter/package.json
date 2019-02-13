@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "netlify-cms": "2.4.2",
-    "netlify-cms-backend-fs": "0.3.5",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "netlify-cms-backend-fs": "^0.3.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1"
   },
   "devDependencies": {
     "lodash.flow": "^3.5.0",

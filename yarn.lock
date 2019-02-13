@@ -9677,10 +9677,10 @@ netlify-cms-backend-bitbucket@^2.1.0:
     js-base64 "^2.4.8"
     semaphore "^1.1.0"
 
-netlify-cms-backend-fs@0.3.5:
-  version "0.3.5"
-  resolved "https://registry.yarnpkg.com/netlify-cms-backend-fs/-/netlify-cms-backend-fs-0.3.5.tgz#136ee238e8af1990d13c3100480ed86c15eef889"
-  integrity sha512-YNmwGAB6ibu9JGmv52SN8RZUUxSRXqsGPE56MGYImaIsfjCJybT1gTscYxU+2I/BAwX/3wzcUPkMUf37k43oYg==
+netlify-cms-backend-fs@^0.3.0:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/netlify-cms-backend-fs/-/netlify-cms-backend-fs-0.3.6.tgz#db2b022533dbf00c8b0a7d5406c7bcf268870c3f"
+  integrity sha512-22G1HuofySLWgjflKlJ9wSg6xiNtbycgwbzznNhS6LZRIOlbHXIO8nw2gtEFaDBgZziym+AhRqNEk1j0V8cH+Q==
   dependencies:
     body-parser "^1.18.3"
     chalk "^2.4.1"
@@ -12428,7 +12428,7 @@ react-dnd@^7.0.0:
     recompose "^0.30.0"
     shallowequal "^1.1.0"
 
-react-dom@^16.6.3, react-dom@^16.7.0, react-dom@^16.8.1:
+react-dom@^16.6.3, react-dom@^16.8.1:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.8.1.tgz#ec860f98853d09d39bafd3a6f1e12389d283dbb4"
   integrity sha512-N74IZUrPt6UiDjXaO7UbDDFXeUXnVhZzeRLy/6iqqN1ipfjrhR60Bp5NuBK+rv3GMdqdIuwIl22u1SYwf330bg==
@@ -12744,7 +12744,7 @@ react-waypoint@^8.1.0:
     prop-types "^15.0.0"
     react-is "^16.6.3"
 
-react@^16.6.3, react@^16.7.0, react@^16.8.1:
+react@^16.6.3, react@^16.8.1:
   version "16.8.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
   integrity sha512-wLw5CFGPdo7p/AgteFz7GblI2JPOos0+biSoxf1FPsGxWQZdN/pj6oToJs1crn61DL3Ln7mN86uZ4j74p31ELQ==
