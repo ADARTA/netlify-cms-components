@@ -2,9 +2,10 @@
   "backend": {
     "name": "test-repo"
   },
+  "load_config_file": false,
   "display_url": "https://netlify-cms-components.netlify.com",
-  "media_folder": "public/assets/uploads",
-  "public_folder": "/assets/uploads",
+  "media_folder": "public/uploads",
+  "public_folder": "/uploads",
   "collections": [{
     "name": "test",
     "label": "Test",

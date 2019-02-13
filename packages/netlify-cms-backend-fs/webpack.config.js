@@ -97,7 +97,7 @@ module.exports = (env, argv) => {
   }
 
   const versionPlugin = new webpack.DefinePlugin({
-    FILESYSTEMBACKEND_VERSION: JSON.stringify(`${pkg.name} ${pkg.version}${isProduction ? '' : '-dev'}`),
+    FILESYSTEMBACKEND_VERSION: JSON.stringify(`${pkg.name} v${pkg.version}${isProduction ? '' : '-dev'}`),
   });
   packageConfig.plugins.push(versionPlugin);
   umdConfig.plugins.push(versionPlugin);
