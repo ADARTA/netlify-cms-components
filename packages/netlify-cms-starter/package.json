@@ -9,16 +9,14 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "netlify-cms": "2.4.2",
-    "netlify-cms-backend-fs": "^0.3.0",
+    "netlify-cms-backend-fs": "0.0.0-development",
     "react": "^16.8.1",
     "react-dom": "^16.8.1"
   },
   "devDependencies": {
     "lodash.flow": "^3.5.0",
-    "react-scripts": "^2.1.2"
+    "react-scripts": "2.1.5"
   },
-  "peerDependencies": {},
   "browserslist": [
     "last 2 Chrome versions",
     "last 2 Opera versions",

@@ -38,9 +38,6 @@ const baseConfig = {
         use: {
           loader: 'svg-inline-loader'
         }
-      }, {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
       }
     ]
   },
