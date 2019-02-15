@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './setup'
 // import CMS, { init } from 'netlify-cms/dist/netlify-cms.es5';
-import CMS, { init } from '../netlify-cms/dist/netlify-cms-manual-init';
+import CMS, { init } from 'netlify-cms/dist/netlify-cms-manual-init';
 // import * as StarterWidget from 'netlify-cms-widget-starter';
 // import { FileSystemBackend } from 'netlify-cms-backend-fs';
 
