@@ -1,5 +1,5 @@
 {
-  "name": "netlify-cms-components",
+  "name": "netlify-cms-starter",
   "version": "0.2.0",
   "private": true,
   "scripts": {
@@ -9,13 +9,53 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@talves/gatsby-plugin-netlify-cms": "^1.0.3",
+    "@talves/netlify-cms-backend-bitbucket": "beta",
+    "@talves/netlify-cms-backend-git-gateway": "beta",
+    "@talves/netlify-cms-backend-github": "beta",
+    "@talves/netlify-cms-backend-gitlab": "beta",
+    "@talves/netlify-cms-backend-test": "beta",
+    "@talves/netlify-cms-core": "beta",
+    "@talves/netlify-cms-editor-component-image": "beta",
+    "@talves/netlify-cms-lib-auth": "beta",
+    "@talves/netlify-cms-lib-util": "beta",
+    "@talves/netlify-cms-media-library-cloudinary": "beta",
+    "@talves/netlify-cms-media-library-uploadcare": "beta",
+    "@talves/netlify-cms-ui-default": "beta",
+    "@talves/netlify-cms-widget-boolean": "beta",
+    "@talves/netlify-cms-widget-date": "beta",
+    "@talves/netlify-cms-widget-datetime": "beta",
+    "@talves/netlify-cms-widget-file": "beta",
+    "@talves/netlify-cms-widget-image": "beta",
+    "@talves/netlify-cms-widget-list": "beta",
+    "@talves/netlify-cms-widget-map": "beta",
+    "@talves/netlify-cms-widget-markdown": "beta",
+    "@talves/netlify-cms-widget-number": "beta",
+    "@talves/netlify-cms-widget-object": "beta",
+    "@talves/netlify-cms-widget-relation": "beta",
+    "@talves/netlify-cms-widget-select": "beta",
+    "@talves/netlify-cms-widget-string": "beta",
+    "@talves/netlify-cms-widget-text": "beta",
+    "emotion": "^9.2.6",
+    "immutable": "^3.7.6",
+    "lodash": "^4.17.10",
+    "moment": "2.24.0",
     "netlify-cms-backend-fs": "0.0.0-development",
-    "react": "^16.8.1",
-    "react-dom": "^16.8.1"
+    "prop-types": "^15.5.10",
+    "react": "16.8.2",
+    "react-dom": "16.8.2",
+    "react-emotion": "^9.2.6",
+    "react-immutable-proptypes": "^2.1.0",
+    "uuid": "3.3.2"
   },
   "devDependencies": {
+    "eslint": "5.12.0",
     "lodash.flow": "^3.5.0",
     "react-scripts": "2.1.5"
+  },
+  "resolutions": {
+    "**/react": "16.8.2",
+    "**/react-dom": "16.8.2"
   },
   "browserslist": [
     "last 2 Chrome versions",
