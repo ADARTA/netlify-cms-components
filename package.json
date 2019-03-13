@@ -7,19 +7,48 @@
     "bootstrap": "yarn && lerna bootstrap",
     "changelog": "echo \"npx conventional-changelog-cli -p angular -i CHANGELOG.md -s -r 0\"",
     "commit": "git-cz",
-    "start": "cd packages/netlify-cms-starter && npm run start",
+    "start": "yarn workspace netlify-cms-starter start",
     "serve:build": "serve -s packages/netlify-cms-starter/build",
     "build": "lerna run build",
-    "build:starter": "cd packages/netlify-cms-starter && npm run build"
+    "build:cms": "yarn workspace @talves/netlify-cms-manual build",
+    "build:fs": "yarn workspace netlify-cms-backend-fs build",
+    "build:starter": "cd packages/netlify-cms-starter && yarn build"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "8.0.5",
     "commitizen": "3.0.5",
+    "cp-cli": "^1.1.2",
     "cz-conventional-changelog": "2.1.0",
-    "lerna": "^3.8.0"
+    "eslint": "5.12.0",
+    "eslint-plugin-react-hooks": "1.0.1",
+    "lerna": "^3.8.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "^1.15.3",
+    "semantic-release": "^15.13.3",
+    "semantic-release-cli": "4.1.0",
+    "style-loader": "^0.23.1",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "4.28.3",
+    "webpack-cli": "^3.1.2"
   },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
     }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Opera versions",
+    "last 2 Firefox versions",
+    "last 2 Edge versions",
+    "last 2 Safari versions",
+    "last 2 iOS versions",
+    "last 2 ChromeAndroid versions"
+  ],
+  "dependencies": {
+    "cross-env": "5.2.0"
   }
 }

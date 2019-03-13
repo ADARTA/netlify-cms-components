@@ -4,9 +4,9 @@
   "description": "Backend for Netlify CMS to test with local file system",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ADARTA/netlify-cms-components.git"
+    "url": "https://github.com/ADARTA/netlify-cms-components/tree/master/packages/netlify-cms-backend-fs"
   },
-  "main": "dist/fs-backend.js",
+  "main": "dist/index.js",
   "files": [
     "dist/",
     "src/",
@@ -16,8 +16,8 @@
   "scripts": {
     "test:simple": "node ./scripts/_tests_/simple.js",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
-    "build:lib": "webpack-cli --mode=production",
-    "build:dev": "webpack-cli --mode=development",
+    "build:lib": "cross-env NODE_ENV=production webpack-cli --mode=production",
+    "build:dev": "cross-env NODE_ENV=development webpack-cli --mode=development",
     "build": "run-s build:copy build:lib",
     "dev": "run-s build:copy build:dev",
     "format": "prettier --write \"src/**/*.js\"",
@@ -33,25 +33,8 @@
     "js-base64": "^2.5.0",
     "multer": "^1.4.1"
   },
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "cp-cli": "^1.1.2",
-    "eslint": "5.13.0",
-    "eslint-plugin-react-hooks": "1.0.1",
-    "npm-run-all": "4.1.5",
-    "prettier": "^1.15.3",
-    "semantic-release": "^15.13.3",
-    "semantic-release-cli": "4.1.0",
-    "style-loader": "^0.23.1",
-    "svg-inline-loader": "^0.8.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2"
-  },
   "peerDependencies": {
-    "react": "^16.8.1"
+    "react": ">=16.8.0"
   },
   "keywords": [
     "adarta",

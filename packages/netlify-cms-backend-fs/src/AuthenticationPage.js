@@ -1,33 +1,34 @@
 import React from 'react'
 import Authentication from './components/Authentication';
-import LoginButtonIcon from './components/FolderIcon';
+
+const defaultUser = { email: 'developer@localhost.com' }
 
 function AuthenticationPage({ config, onLogin, inProgress }) {
-  const {user, setUser} = React.useState({ email: 'developer@localhost.com' })
-  const {loggingIn, setLoggingIn} = React.useState(inProgress)
+  const [user, setUser] = React.useState(defaultUser)
+  const [loggingIn, setLoggingIn] = React.useState(inProgress)
   const logoPath = config.get('logo_url') || ''
+  const skipLogin = config.getIn(['backend', 'login']) === false
 
-  function handleLogin(e) {
-    e.preventDefault()
+  const handleLogin = event => {
+    event.preventDefault()
+    console.log('user:', user)
     onLogin(user)
   }
 
   React.useEffect(() => {
-    const skipLogin = config.getIn(['backend', 'login']) === false
-    if (skipLogin) onLogin(user)
+    if (skipLogin) onLogin(defaultUser)
   })
+
+  React.useEffect(() => {
+    setLoggingIn(inProgress)
+    if (inProgress) setUser(defaultUser)
+  }, [inProgress])
 
   return <Authentication
     onLogin={handleLogin}
     loginDisabled={inProgress}
     logoUrl={logoPath}
-    renderButtonContent={() => (
-      <React.Fragment>
-        <LoginButtonIcon type="folder" /> {inProgress ? 'Logging in...' : 'Login to File System'}
-      </React.Fragment>
-    )}
   />
 }
-
 
 export default AuthenticationPage

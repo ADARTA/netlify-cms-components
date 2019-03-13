@@ -10,6 +10,7 @@
     "node": true
   },
   "globals": {
+    "FILESYSTEMBACKEND_VERSION": false
   },
   "plugins": [
     "react-hooks"
