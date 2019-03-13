@@ -95,3 +95,15 @@ export function fileExtension(p) {
   const ext = fileExtensionWithSeparator(p);
   return ext === '' ? ext : ext.substr(1);
 }
+
+export function trimStart(string, chars) {
+  if (string && chars === undefined) {
+    return string[methodName]()
+  }
+  if (!string || !chars) {
+    return string
+  }
+  const strSymbols = stringToArray(string)
+  const start = charsStartIndex(strSymbols, stringToArray(chars))
+  return castSlice(strSymbols, start).join('')
+}

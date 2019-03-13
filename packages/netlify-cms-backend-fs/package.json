@@ -4,9 +4,9 @@
   "description": "Backend for Netlify CMS to test with local file system",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ADARTA/netlify-cms-components.git"
+    "url": "https://github.com/ADARTA/netlify-cms-components/tree/master/packages/netlify-cms-backend-fs"
   },
-  "main": "dist/fs-backend.js",
+  "main": "dist/index.js",
   "files": [
     "dist/",
     "src/",
@@ -16,8 +16,8 @@
   "scripts": {
     "test:simple": "node ./scripts/_tests_/simple.js",
     "build:copy": "cp-cli scripts/fs/ dist/fs/",
-    "build:lib": "webpack-cli --mode=production",
-    "build:dev": "webpack-cli --mode=development",
+    "build:lib": "cross-env NODE_ENV=production webpack-cli --mode=production",
+    "build:dev": "cross-env NODE_ENV=development webpack-cli --mode=development",
     "build": "run-s build:copy build:lib",
     "dev": "run-s build:copy build:dev",
     "format": "prettier --write \"src/**/*.js\"",
@@ -27,35 +27,14 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
+    "@emotion/core": "10.0.7",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "js-base64": "^2.5.0",
     "multer": "^1.4.1"
   },
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.4",
-    "cp-cli": "^1.1.2",
-    "css-loader": "^2.0.2",
-    "npm-run-all": "4.1.5",
-    "prettier": "^1.15.3",
-    "semantic-release": "^15.13.3",
-    "semantic-release-cli": "4.1.0",
-    "style-loader": "^0.23.1",
-    "svg-inline-loader": "^0.8.0",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.1.2"
-  },
   "peerDependencies": {
-    "emotion": "^9.2.6",
-    "lodash": "^4.17.10",
-    "netlify-cms-ui-default": "^2.0.0",
-    "prop-types": "^15.6.2",
-    "react": "^16.8.1",
-    "react-emotion": "^9.2.6",
-    "react-immutable-proptypes": "^2.1.0"
+    "react": ">=16.8.0"
   },
   "keywords": [
     "adarta",

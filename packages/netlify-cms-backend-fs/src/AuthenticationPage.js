@@ -1,58 +1,34 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import styled from 'react-emotion';
-import { AuthenticationPage, Icon } from 'netlify-cms-ui-default';
+import React from 'react'
+import Authentication from './components/Authentication';
 
-const LoginButtonIcon = styled(Icon)`
-  margin-right: 18px;
-`;
+const defaultUser = { email: 'developer@localhost.com' }
 
-export default class FileSystemAuthenticationPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: 'developer@localhost.com' };
-    this.props = props;
-    this.handleLogin = this.handleLogin.bind(this);
+function AuthenticationPage({ config, onLogin, inProgress }) {
+  const [user, setUser] = React.useState(defaultUser)
+  const [loggingIn, setLoggingIn] = React.useState(inProgress)
+  const logoPath = config.get('logo_url') || ''
+  const skipLogin = config.getIn(['backend', 'login']) === false
+
+  const handleLogin = event => {
+    event.preventDefault()
+    console.log('user:', user)
+    onLogin(user)
   }
 
-  componentDidMount() {
-    /**
-     * Allow login screen to be skipped for dev purposes.
-     */
-    const skipLogin = this.props.config.getIn(['backend', 'login']) === false;
-    if (skipLogin) {
-      this.props.onLogin(this.state);
-    }
-  }
+  React.useEffect(() => {
+    if (skipLogin) onLogin(defaultUser)
+  })
 
-  handleLogin(e) {
-    e.preventDefault();
-    this.props.onLogin(this.state);
-  }
+  React.useEffect(() => {
+    setLoggingIn(inProgress)
+    if (inProgress) setUser(defaultUser)
+  }, [inProgress])
 
-  render() {
-    const { inProgress, config } = this.props;
-    const logoPath = config.get('logo_url') || '/assets/media/logo.svg';
-
-    return (
-      <AuthenticationPage
-        onLogin={this.handleLogin}
-        loginDisabled={inProgress}
-        loginErrorMessage={this.state.loginError}
-        logoUrl={logoPath}
-        renderButtonContent={() => (
-          <React.Fragment>
-            <LoginButtonIcon type="folder" /> {inProgress ? 'Logging in...' : 'Login to File System'}
-          </React.Fragment>
-        )}
-      />
-    );
-  }
+  return <Authentication
+    onLogin={handleLogin}
+    loginDisabled={inProgress}
+    logoUrl={logoPath}
+  />
 }
 
-AuthenticationPage.propTypes = {
-  onLogin: PropTypes.func.isRequired,
-  inProgress: PropTypes.bool,
-  config: ImmutablePropTypes.map,
-};
+export default AuthenticationPage

@@ -1,7 +1,6 @@
-import trimStart from 'lodash/trimStart';
 import AuthenticationPage from './AuthenticationPage';
 import API from './API';
-import { fileExtension } from './lib/pathHelper';
+import { fileExtension, trimStart } from './lib/pathHelper';
 
 const nameFromEmail = email => {
   return email

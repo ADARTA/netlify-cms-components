@@ -1,36 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './setup'
-// import CMS, { init } from 'netlify-cms/dist/netlify-cms.es5';
-import CMS, { init } from 'netlify-cms';
-// import * as StarterWidget from 'netlify-cms-widget-starter';
-// import { FileSystemBackend } from 'netlify-cms-backend-fs';
+import CMS from './cms';
+import FileSystemBackend from 'netlify-cms-backend-fs/dist/index';
 
 import config from './data/config.json';
 import AuthorsPreview from './components/AuthorsPreview';
 import EditorYoutube from './components/EditorYoutube';
 
-CMS.init = init;
-
-class NetlifyCMS extends Component {
-  componentDidMount () {
+function NetlifyCMS() {
+  React.useEffect(() => {
+    console.log('CMS', CMS)
     if (process.env.NODE_ENV === 'development') {
-      const { FileSystemBackend } = require('netlify-cms-backend-fs');
+      // const FileSystemBackend = import('netlify-cms-backend-fs');
+      console.log('FileSystemBackend', FileSystemBackend)
       config.backend = {
         "name": "file-system",
         "api_root": "http://localhost:3000/api"
       }
       CMS.registerBackend('file-system', FileSystemBackend);
     }
-    CMS.init({config});
     CMS.registerPreviewTemplate('authors', AuthorsPreview);
     CMS.registerEditorComponent(EditorYoutube);
-    // CMS.registerWidget('test', StarterWidget.Control, StarterWidget.Preview);
-  }
-  render() {
-    return (
-      <div id="nc-root" />
-    );
-  }
+    
+    CMS.init({ config });
+  })
+
+  return (
+    <div id="nc-root" />
+  );
 }
 
 export default NetlifyCMS;
