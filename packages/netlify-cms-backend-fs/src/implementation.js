@@ -87,12 +87,13 @@ export class FileSystemBackend {
   }
 
   getMedia() {
+    const publicFolderPath = this.config.get('public_folder') || '';
     return this.api
       .listFiles(this.config.get('media_folder'))
       .then(files => files.filter(file => file.type === 'file'))
       .then(files =>
         files.map(({ sha, name, size, stats, path }) => {
-          return { id: sha, name, size: stats.size, url: `${this.config.get('public_folder')}/${name}`, path };
+          return { id: sha, name, size: stats.size, displayURL: `${publicFolderPath}/${name}`, path };
         }),
       );
   }
