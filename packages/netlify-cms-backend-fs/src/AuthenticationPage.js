@@ -11,7 +11,6 @@ function AuthenticationPage({ config, onLogin, inProgress }) {
 
   const handleLogin = event => {
     event.preventDefault()
-    console.log('user:', user)
     onLogin(user)
   }
 
@@ -26,7 +25,7 @@ function AuthenticationPage({ config, onLogin, inProgress }) {
 
   return <Authentication
     onLogin={handleLogin}
-    loginDisabled={inProgress}
+    loginDisabled={loggingIn}
     logoUrl={logoPath}
   />
 }

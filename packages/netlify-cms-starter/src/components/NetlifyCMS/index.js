@@ -9,10 +9,9 @@ import EditorYoutube from './components/EditorYoutube';
 
 function NetlifyCMS() {
   React.useEffect(() => {
-    console.log('CMS', CMS)
     if (process.env.NODE_ENV === 'development') {
       // const FileSystemBackend = import('netlify-cms-backend-fs');
-      console.log('FileSystemBackend', FileSystemBackend)
+      // console.log('FileSystemBackend', FileSystemBackend)
       config.backend = {
         "name": "file-system",
         "api_root": "http://localhost:3000/api"
