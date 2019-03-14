@@ -51,5 +51,8 @@
     "last 2 Safari versions",
     "last 2 iOS versions",
     "last 2 ChromeAndroid versions"
-  ]
+  ],
+  "devDependencies": {
+    "cp-cli": "2.0.0"
+  }
 }
