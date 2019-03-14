@@ -4,6 +4,7 @@ node_js:
 cache:
   yarn: true
   directories:
+    - $HOME/.npm
     - $HOME/.yarn-cache
     - node_modules
 
