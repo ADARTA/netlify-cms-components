@@ -135,6 +135,7 @@ export default class API {
           encoding: 'base64',
         }),
       }).then(response => {
+        item.sha = response.sha;
         item.uploaded = true;
         return item;
       }),
@@ -143,7 +144,7 @@ export default class API {
 
   persistFiles(entry, mediaFiles, options) {
     const uploadPromises = [];
-    const files = mediaFiles.concat(entry);
+    const files = entry ? mediaFiles.concat(entry) : mediaFiles;
 
     files.forEach(file => {
       if (file.uploaded) {

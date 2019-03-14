@@ -1,6 +1,7 @@
+import trimStart from 'lodash/trimStart';
 import AuthenticationPage from './AuthenticationPage';
 import API from './API';
-import { fileExtension, trimStart } from './lib/pathHelper';
+import { fileExtension } from './lib/pathHelper';
 
 const nameFromEmail = email => {
   return email
@@ -93,7 +94,14 @@ export class FileSystemBackend {
       .then(files => files.filter(file => file.type === 'file'))
       .then(files =>
         files.map(({ sha, name, size, stats, path }) => {
-          return { id: sha, name, size: stats.size, displayURL: `${publicFolderPath}/${name}`, path };
+          return {
+            id: sha || `backend-fs-${name}`,
+            name,
+            size: stats.size,
+            urlIsPublicPath: true,
+            displayURL: `${publicFolderPath}/${name}`,
+            path,
+          };
         }),
       );
   }
@@ -104,10 +112,16 @@ export class FileSystemBackend {
 
   async persistMedia(mediaFile, options = {}) {
     try {
-      const response = await this.api.persistFiles([], [mediaFile], options);
-      const { value, path, public_path, fileObj } = mediaFile;
-      const url = public_path;
-      return { id: response.sha, name: value, size: fileObj.size, url, path: trimStart(path, '/') };
+      await this.api.persistFiles(null, [mediaFile], options);
+
+      const { sha, value, path, fileObj } = mediaFile;
+      const displayURL = URL.createObjectURL(fileObj);
+      return {
+        id: sha || `backend-fs-${value}`,
+        name: value,
+        size: fileObj.size,
+        displayURL,
+        path: trimStart(path, '/') };
     } catch (error) {
       console.error(error);
       throw error;
