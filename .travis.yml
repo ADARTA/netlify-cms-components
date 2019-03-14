@@ -13,7 +13,6 @@ branches:
 
 install:
   - yarn
-  - yarn global add lerna
   - lerna bootstrap
 
 script:
