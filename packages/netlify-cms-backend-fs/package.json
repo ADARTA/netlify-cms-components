@@ -4,7 +4,7 @@
   "description": "Backend for Netlify CMS to test with local file system",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ADARTA/netlify-cms-components/tree/master/packages/netlify-cms-backend-fs"
+    "url": "https://github.com/ADARTA/netlify-cms-components"
   },
   "main": "dist/index.js",
   "files": [
