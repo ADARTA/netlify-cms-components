@@ -55,6 +55,7 @@
   "devDependencies": {
     "cp-cli": "2.0.0",
     "cross-env": "5.2.0",
+    "semantic-release": "^15.13.3",
     "webpack-cli": "3.2.3"
   }
 }
