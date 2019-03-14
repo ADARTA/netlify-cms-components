@@ -53,6 +53,7 @@
     "last 2 ChromeAndroid versions"
   ],
   "devDependencies": {
-    "cp-cli": "2.0.0"
+    "cp-cli": "2.0.0",
+    "cross-env": "5.2.0"
   }
 }
