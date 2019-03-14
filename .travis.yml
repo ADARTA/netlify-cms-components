@@ -16,9 +16,8 @@ install:
   - lerna bootstrap
 
 script:
-  - cd packages/netlify-cms-backend-fs
-  - yarn build:copy
-  - yarn build:lib
+  - yarn workspace netlify-cms-backend-fs build:copy
+  - yarn workspace netlify-cms-backend-fs build:lib
 
 after_success:
-  - yarn semantic-release
+  - yarn workspace netlify-cms-backend-fs semantic-release
