@@ -1,4 +1,5 @@
 import trimStart from 'lodash/trimStart';
+import uuid from 'uuid/v4';
 import AuthenticationPage from './AuthenticationPage';
 import API from './API';
 import { fileExtension } from './lib/pathHelper';
@@ -93,13 +94,14 @@ export class FileSystemBackend {
       .listFiles(this.config.get('media_folder'))
       .then(files => files.filter(file => file.type === 'file'))
       .then(files =>
-        files.map(({ sha, name, size, stats, path }) => {
+        files.map(({ name, stats, path }) => {
           return {
-            id: sha || `backend-fs-${name}`,
+            id: uuid(),
             name,
             size: stats.size,
-            urlIsPublicPath: true,
+            urlIsPublicPath: false,
             displayURL: `${publicFolderPath}/${name}`,
+            url: `${publicFolderPath}/${name}`,
             path,
           };
         }),
