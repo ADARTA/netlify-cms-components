@@ -6,12 +6,33 @@ const webpack = require('webpack');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 
 const externals = {
+  '@emotion/core': {
+    root: ['NetlifyCmsDefaultExports', 'EmotionCore'],
+    commonjs2: '@emotion/core',
+    commonjs: '@emotion/core',
+    amd: '@emotion/core',
+    umd: '@emotion/core',
+  },
+  lodash: {
+    root: ['NetlifyCmsDefaultExports', 'Lodash'],
+    commonjs2: 'lodash',
+    commonjs: 'lodash',
+    amd: 'lodash',
+    umd: 'lodash',
+  },
   react: {
     root: 'React',
     commonjs2: 'react',
     commonjs: 'react',
     amd: 'react',
     umd: 'react',
+  },
+  uuid: {
+    root: ['NetlifyCmsDefaultExports', 'UUId'],
+    commonjs2: 'uuid',
+    commonjs: 'uuid',
+    amd: 'uuid',
+    umd: 'uuid',
   },
 }
 

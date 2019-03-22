@@ -27,15 +27,22 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@emotion/core": "10.0.7",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "js-base64": "^2.5.0",
-    "lodash": "^4.17.10",
     "multer": "^1.4.1"
   },
+  "devDependencies": {
+    "cp-cli": "2.0.0",
+    "cross-env": "5.2.0",
+    "semantic-release": "^15.13.3",
+    "webpack-cli": "3.2.3"
+  },
   "peerDependencies": {
-    "react": ">=16.8.0"
+    "@emotion/core": "^10.0.9",
+    "lodash": "^4.17.11",
+    "react": "^16.8.0",
+    "uuid": "^3.3.2"
   },
   "keywords": [
     "adarta",
@@ -52,11 +59,5 @@
     "last 2 Safari versions",
     "last 2 iOS versions",
     "last 2 ChromeAndroid versions"
-  ],
-  "devDependencies": {
-    "cp-cli": "2.0.0",
-    "cross-env": "5.2.0",
-    "semantic-release": "^15.13.3",
-    "webpack-cli": "3.2.3"
-  }
+  ]
 }
