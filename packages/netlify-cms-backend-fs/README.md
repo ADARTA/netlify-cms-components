@@ -62,11 +62,14 @@ Express server middleware is in the `dist/fs` directory.
      */
     CMS_MANUAL_INIT = true; 
   </script>
-  <script type="text/javascript" src='netlify-cms.js'></script>
+  <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+  <script type="text/javascript" src='netlify-cms-app.js'></script>
   <script type="text/javascript" src="backend-fs.js"></script>
   <script>
+    var CMS = NetlifyCmsApp;
     CMS.registerBackend("file-system", FileSystemBackendClass);
-    initCMS(); // Manually starts the CMS on the page after the registration of the backend
+    CMS.init(); // Manually starts the CMS on the page after the registration of the backend
   </script>
 </body>
 ```
@@ -79,18 +82,17 @@ OR
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Content Manager</title>
+    <title>NetlifyCMS</title>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
-  <script>
-    CMS_MANUAL_INIT = true; 
-  </script>
-    <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.4.0/dist/index.js"></script>
+    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/netlify-cms-app@2.9.0/dist/netlify-cms-app.js"></script>
     <script>
+      var CMS = NetlifyCmsApp;
       CMS.registerBackend("file-system", FileSystemBackendClass)
-      initCMS(); // Manually starts the CMS on the page after the registration of the backend
+      CMS.init(); // Manually starts the CMS on the page after the registration of the backend
     </script>
   </body>
 </html>
