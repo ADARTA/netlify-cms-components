@@ -62,8 +62,8 @@ Express server middleware is in the `dist/fs` directory.
      */
     CMS_MANUAL_INIT = true; 
   </script>
-  <script type="text/javascript" src='netlify-cms.js'/>
-  <script type="text/javascript" src="backend-fs.js"/>
+  <script type="text/javascript" src='netlify-cms.js'></script>
+  <script type="text/javascript" src="backend-fs.js"></script>
   <script>
     CMS.registerBackend("file-system", FileSystemBackendClass);
     initCMS(); // Manually starts the CMS on the page after the registration of the backend
@@ -87,7 +87,7 @@ OR
     CMS_MANUAL_INIT = true; 
   </script>
     <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.4.0/dist/index.js"/>
+    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.4.0/dist/index.js"></script>
     <script>
       CMS.registerBackend("file-system", FileSystemBackendClass)
       initCMS(); // Manually starts the CMS on the page after the registration of the backend
