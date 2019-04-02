@@ -7,9 +7,7 @@
 
 - This library is still in beta!
 - Version 0.4.0 is a breaking change 🐉.
-- Version 0.4.0+ is only compatible with builds of `netlify-cms` when [PR (#2141)][5] lands.
-This library will require `netlify-cms` as a reusable component to better promote
-better practices for a single instance of React. The starter here gives an example.
+- Version 0.4.0+ is only compatible with builds of `netlify-cms-app` (2.9.0+).
 - This is a backend library for NetlifyCMS proposed for file system testing locally during development.
 - Handy for testing your config files.
 
@@ -30,7 +28,7 @@ npm install netlify-cms-backend-fs --save-dev
 
 Backend library bundles exist in `dist` directory.
 
-- `dist/index.js` can be used for global access to `FileSystemBackendClass` and is a `umd` build to use directly as a component see example in `netlify-cms-starter`
+- `dist/index.js` can be used for global access to `FileSystemBackendClass` and is a `umd` build to use directly as a component see example in `netlify-cms-starter` in this monorepo.
 
 Express server middleware is in the `dist/fs` directory.
 
@@ -47,7 +45,7 @@ Express server middleware is in the `dist/fs` directory.
 
 ### Add script and register in your CMS page
 
-**_NOTE:_** v4.x of this library will not work without a version of `netlify-cms` that exports React (see notes at the top of this document).
+**_NOTE:_** v4.x of this library will not work without a current version of `netlify-cms-app` (see notes at the top of this document).
 
 ```html
 <head>
@@ -89,6 +87,7 @@ OR
     <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/netlify-cms-app@2.9.0/dist/netlify-cms-app.js"></script>
+    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.4.3/dist/index.js"></script>
     <script>
       var CMS = NetlifyCmsApp;
       CMS.registerBackend("file-system", FileSystemBackendClass)
@@ -100,22 +99,24 @@ OR
 
 ### Start your devServer using the middleware scripts
 
-[Starters Coming Soon] or you can see the [netlify-cms-starter][1] for a create-react-app example.
+- see the [netlify-cms-starter][1] for a create-react-app example in this monorepo.
+- see [ADARTA/netlify-cms-react-example][4] for a full create-react-app example.
+- see [ADARTA/gatsby-starter-netlify-cms][5] for a Gatsby use case example (WIP).
 
 ## Dependencies
 
-This library requires you to be using [NetlifyCMS][3] v2.x or above (see notes at the top).
+This library requires you to be using [NetlifyCMS][3] v2.9.x or above (see notes at the top).
 
 ***Recommendation:*** If you are looking to extend NetlifyCMS and run a local file-system setup for development, use the [netlify-cms-react-example][4] starter project. It implements the backend as a component and bundles to a custom CMS deployment for your project.
 
 ***WARNING:*** This is a development tool. It can safely be used in a repository locally, since it is not used in production code. Commit and push changes before you start using.
 
-Don't forget: code like you are on 🔥
+Don't forget: code like you're on 🔥
 
 The Netlify Logo is Copyright of [Netlify][2] and should not be used without their consent.
 
 [1]: https://github.com/ADARTA/netlify-cms-components/tree/master/packages/netlify-cms-starter
 [2]: https://www.netlify.com/
 [3]: https://www.netlifycms.org/
-[4]: https://github.com/adarta/netlify-cms-react-example
-[5]: https://github.com/netlify/netlify-cms/pull/2141
+[4]: https://github.com/ADARTA/netlify-cms-react-example
+[5]: https://github.com/ADARTA/gatsby-starter-netlify-cms
