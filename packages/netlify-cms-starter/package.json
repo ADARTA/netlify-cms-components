@@ -1,6 +1,6 @@
 {
   "name": "netlify-cms-starter",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
@@ -9,52 +9,14 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.9",
-    "@emotion/styled": "^10.0.9",
-    "@talves/netlify-cms-backend-bitbucket": "2.6.2-beta.7",
-    "@talves/netlify-cms-backend-git-gateway": "2.6.2-beta.7",
-    "@talves/netlify-cms-backend-github": "2.6.2-beta.7",
-    "@talves/netlify-cms-backend-gitlab": "2.6.2-beta.7",
-    "@talves/netlify-cms-backend-test": "2.6.2-beta.7",
-    "@talves/netlify-cms-core": "2.6.2-beta.7",
-    "@talves/netlify-cms-editor-component-image": "2.6.2-beta.7",
-    "@talves/netlify-cms-lib-auth": "2.6.2-beta.7",
-    "@talves/netlify-cms-lib-util": "2.6.2-beta.7",
-    "@talves/netlify-cms-media-library-cloudinary": "2.6.2-beta.7",
-    "@talves/netlify-cms-media-library-uploadcare": "2.6.2-beta.7",
-    "@talves/netlify-cms-ui-default": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-boolean": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-date": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-datetime": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-file": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-image": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-list": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-map": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-markdown": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-number": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-object": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-relation": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-select": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-string": "2.6.2-beta.7",
-    "@talves/netlify-cms-widget-text": "2.6.2-beta.7",
-    "immutable": "^3.7.6",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
-    "netlify-cms-backend-fs": "0.0.0-development",
-    "prop-types": "^15.7.2",
+    "netlify-cms-app": "^2.9.0",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-immutable-proptypes": "^2.1.0",
-    "uuid": "3.3.2"
+    "react-dom": "^16.8.4"
   },
   "devDependencies": {
     "eslint": "5.12.0",
     "lodash.flow": "^3.5.0",
-    "react-scripts": "^2.1.5"
-  },
-  "resolutions": {
-    "**/react": "16.8.2",
-    "**/react-dom": "16.8.2"
+    "react-scripts": "^2.1.8"
   },
   "browserslist": [
     "last 2 Chrome versions",

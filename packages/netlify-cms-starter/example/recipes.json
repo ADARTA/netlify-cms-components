@@ -1,12 +1,14 @@
 {
-  "items": [{
+  "items": [
+    {
+      "title": "Almond Roca1",
       "id": "roca",
-      "title": "Almond Roca"
+      "directions": "- Item 1\n- Item 2"
     },
     {
-      "id": "number2",
       "title": "This is Recipe Two",
-      "Directions": "##Just a Title\n\n**Here is some markdown**"
+      "id": "number2",
+      "directions": "- Item 1\n- Item 2"
     }
   ]
 }

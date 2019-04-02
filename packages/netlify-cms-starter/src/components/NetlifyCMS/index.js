@@ -1,7 +1,6 @@
 import React from 'react';
-import './setup'
-import CMS from './cms';
-import FileSystemBackend from 'netlify-cms-backend-fs/dist/index';
+import CMS from 'netlify-cms-app';
+import FileSystemBackend from 'netlify-cms-backend-fs';
 
 import config from './data/config.json';
 import AuthorsPreview from './components/AuthorsPreview';
