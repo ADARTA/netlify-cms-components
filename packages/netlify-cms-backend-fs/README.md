@@ -34,9 +34,8 @@ Express server middleware is in the `dist/fs` directory.
 
 - `dist/fs/index.js` (not bundled) has the node script to be used as middleware for webpack devServer or express server to create the api for development.
 
-## How to register with CMS on a static page locally
+## How to register with CMS on a static page locally (testing only, not recommended)
 
-  - Copy the package `dist/index.js` script bundle file into your cms location (maybe `backend-fs.js`).
   - Change the `index.html` page to use the backend as in the example below
   - Register the backend Class to the CMS as shown below
   - Change the `config.yml` backend to `backend: file-system` or the name you registered
@@ -48,33 +47,6 @@ Express server middleware is in the `dist/fs` directory.
 **_NOTE:_** v4.x of this library will not work without a current version of `netlify-cms-app` (see notes at the top of this document).
 
 ```html
-<head>
-  ...
-</head>
-<body>
-  <script>
-    /**
-     * Global flag to initialize the CMS manually after registering backend and widgets.
-     * In most cases, the CMS will render prior to the backend script load which could cause errors.
-     * This will make sure the backend is registered prior to the loading of the CMS.
-     */
-    CMS_MANUAL_INIT = true; 
-  </script>
-  <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
-  <script type="text/javascript" src='netlify-cms-app.js'></script>
-  <script type="text/javascript" src="backend-fs.js"></script>
-  <script>
-    var CMS = NetlifyCmsApp;
-    CMS.registerBackend("file-system", FileSystemBackendClass);
-    CMS.init(); // Manually starts the CMS on the page after the registration of the backend
-  </script>
-</body>
-```
-
-OR
-
-```html
 <!doctype html>
 <html>
   <head>
@@ -84,10 +56,11 @@ OR
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
-    <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/netlify-cms-app@2.9.0/dist/netlify-cms-app.js"></script>
-    <script src="https://unpkg.com/netlify-cms-backend-fs@^0.4.3/dist/index.js"></script>
+      <script src="https://unpkg.com/react@^16/umd/react.production.min.js"></script>
+      <script src="https://unpkg.com/react-dom@^16/umd/react-dom.production.min.js"></script>
+      <script src="https://unpkg.com/netlify-cms-default-exports@2.2.1/dist/netlify-cms-default-exports.js"></script>
+      <script src="https://unpkg.com/netlify-cms-app@2.9.0/dist/netlify-cms-app.js"></script>
+      <script src="https://unpkg.com/netlify-cms-backend-fs@0.4.4/dist/index.js"></script>
     <script>
       var CMS = NetlifyCmsApp;
       CMS.registerBackend("file-system", FileSystemBackendClass)
@@ -96,8 +69,29 @@ OR
   </body>
 </html>
 ```
-
 ### Start your devServer using the middleware scripts
+
+`server.js`
+```javascript
+const express = require('express')
+const fsMiddleware = require('netlify-cms-backend-fs/dist/fs')
+const app = express()
+const port = 3000
+const host = 'localhost'
+
+app.use(express.static('.')) // root of our site
+
+fsMiddleware(app) // sets up the /api proxy paths
+
+app.listen(port, () => console.log(
+    `
+    Server listening at http://${host}:${port}/
+    API listening at http://${host}:${port}/api
+    `
+))
+```
+
+## Some examples of `netlify-cms-backend-fs` in projects
 
 - see the [netlify-cms-starter][1] for a create-react-app example in this monorepo.
 - see [ADARTA/netlify-cms-react-example][4] for a full create-react-app example.
