@@ -81,6 +81,8 @@ const host = 'localhost'
 
 app.use(express.static('.')) // root of our site
 
+// add cors code here (shown below) if you have a cors issue
+
 fsMiddleware(app) // sets up the /api proxy paths
 
 app.listen(port, () => console.log(
@@ -90,12 +92,26 @@ app.listen(port, () => console.log(
     `
 ))
 ```
+### Cors issue
+
+If having a cors problem when running on different ports, you can add the following to the express app.
+
+```
+var allowCrossDomain = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+}
+app.use(allowCrossDomain);
+```
 
 ## Some examples of `netlify-cms-backend-fs` in projects
 
 - see the [netlify-cms-starter][1] for a create-react-app example in this monorepo.
 - see [ADARTA/netlify-cms-react-example][4] for a full create-react-app example.
 - see [ADARTA/gatsby-starter-netlify-cms][5] for a Gatsby use case example (WIP).
+
 
 ## Dependencies
 
