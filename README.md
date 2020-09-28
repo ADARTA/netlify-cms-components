@@ -4,7 +4,7 @@ Open source components for NetlifyCMS
 
 ### [netlify-cms-backend-fs][1] (deprecated for [official solution](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository))
 
-Published to npm
+Go to [https://github.com/ADARTA/netlify-cms-react-example](https://github.com/ADARTA/netlify-cms-react-example) to see an example of the new proxy server being used.
 
 ### [netlify-cms-starter][2]
 
