@@ -1,4 +1,4 @@
-# [Deprecated for Official Solution](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository)
+# [[Deprecated for Official Solution](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository)]
 
 ## Custom Backend for NetlifyCMS
 
