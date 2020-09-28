@@ -2,7 +2,7 @@ Open source components for NetlifyCMS
 
 ## Packages (`packages/`)
 
-### [netlify-cms-backend-fs][1]
+### [netlify-cms-backend-fs][1] (deprecated for [official solution](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository))
 
 Published to npm
 
