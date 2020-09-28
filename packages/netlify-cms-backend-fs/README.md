@@ -1,3 +1,5 @@
+# [Deprecated for Official Solution](https://www.netlifycms.org/docs/beta-features/#working-with-a-local-git-repository)
+
 ## Custom Backend for NetlifyCMS
 
 [![Build Status](https://img.shields.io/travis/ADARTA/netlify-cms-components/master.svg?style=flat-square)](https://travis-ci.org/ADARTA/netlify-cms-components)
